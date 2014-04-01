@@ -1,41 +1,75 @@
 <script src="/vendor/chui/chocolatechip-3.0.6.js"></script>
 <script src="/vendor/chui/chui-3.0.6.js"></script>
+<script type="text/javascript">
+$(function() {
+  var segmentedOptions = {
+    id: 'mySegmented',
+    labels : ['Chat','Media'],
+    selected: 0
+  };
+
+  var segmentedResponse = function(e) {
+    e.stopPropagation();
+    $('#output').find('h3 > span').html(($(this).index() + 1));
+  };
+
+  var newSegmented = $.UICreateSegmented(segmentedOptions);
+    $('#segmentedPanel').append(newSegmented);
+    $('.segmented').UISegmented({callback:segmentedResponse});
+    $('.segmented').UIPanelToggle('#toggle-panels',function(){$.noop;});
+
+  var selectedPanel = $('.segmented').find('.selected').index();
+    $('#output').find('span').html(selectedPanel + 1);
+  });
+</script>
 
 <script src='https://cdn.firebase.com/v0/firebase.js'></script>
 
-<section class="chat-firebase">
-  <div class="touch">
-    <div class="messages"></div>
-    <input type='text' class="chat-input user-name" id='nameInput' placeholder='Name'>
-    <input type='text' class="chat-input user-message" id='messageInput' placeholder='Message'>
-    <script>
-      var myDataRef = new Firebase('https://final-year.firebaseio.com/');
-      
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          myDataRef.push({name: name, text: text});
-          $('#messageInput').val('');
-        }
-      });
-      myDataRef.on('child_added', function(snapshot) {
-        var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
-      });
-      function displayChatMessage(name, text) {
-        $('<div class="chat-text"/>').text(text).prepend($('<p class="chat-name"/>').text(name+': ')).appendTo($('.messages'));
-        $('.messages')[0].scrollTop = $('.messages')[0].scrollHeight;
-      };
-    </script>
-  </div>
-</section>
+<article>
+  <section class="chat-firebase">
+    <div id='segmentedPanel' class='horizontal centered'></div>
+    <div id="toggle-panels">
+      <div class="touch">
+        <div class="messages"></div>
+        <input type='text' class="chat-input user-name" id='nameInput' placeholder='Name'>
+        <input type='text' class="chat-input user-message" id='messageInput' placeholder='Message'>
+        <script>
+        var myDataRef = new Firebase('https://final-year.firebaseio.com/');
 
-<div class="friend sheet">
-  <div class="sheet opened">
-    <a class="sheet-button mute_btn">Mute</a>
-    <a class="sheet-button block_btn">Block</a>
-    <a class="sheet-button cancel_btn">Cancel</a>
-  </div>
-</div>
-</div>
+        $('#messageInput').keypress(function (e) {
+          if (e.keyCode == 13) {
+            var name = $('#nameInput').val();
+            var text = $('#messageInput').val();
+            myDataRef.push({name: name, text: text});
+            $('#messageInput').val('');
+          }
+        });
+        myDataRef.on('child_added', function(snapshot) {
+          var message = snapshot.val();
+          displayChatMessage(message.name, message.text);
+        });
+        function displayChatMessage(name, text) {
+          $('<div class="chat-text"/>').text(text).prepend($('<p class="chat-name"/>').text(name+': ')).appendTo($('.messages'));
+          $('.messages')[0].scrollTop = $('.messages')[0].scrollHeight;
+        };
+        </script>
+      </div>
+    
+    <div>
+    <p>tab 2</p>
+      
+    </div>
+    </div>
+  </section>
+</article>
+
+
+
+<!-- 
+  <div class="friend sheet">
+    <div class="sheet opened">
+      <a class="sheet-button mute_btn">Mute</a>
+      <a class="sheet-button block_btn">Block</a>
+      <a class="sheet-button cancel_btn">Cancel</a>
+    </div>
+  </div> -->

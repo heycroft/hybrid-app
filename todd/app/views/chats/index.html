@@ -1,9 +1,36 @@
 <script src="/vendor/chui/chocolatechip-3.0.6.js"></script>
 <script src="/vendor/chui/chui-3.0.6.js"></script>
 <script type="text/javascript">
-  
+/*$(function() {
+var segmentedOptions = {
+  id: 'mySegmented',
+  labels : ['Feed','About','Groups'],
+  selected: 0
+};
+
+var segmentedResponse = function(e) {
+  e.stopPropagation();
+  $('#output').find('h3 > span').html(($(this).index() + 1));
+};
+
+var newSegmented = $.UICreateSegmented(segmentedOptions);
+  $('#segmentedPanel').append(newSegmented);
+  $('.segmented').UISegmented({callback:segmentedResponse});
+  $('.segmented').UIPanelToggle('#toggle-panels',function(){$.noop;});
+
+var selectedPanel = $('.segmented').find('.selected').index();
+  $('#output').find('span').html(selectedPanel + 1);
+});*/
 
 </script>
+<style type="">
+/*   #segmentedPanel {
+      position: absolute;
+      top: 0;
+      display: block;
+   }*/
+</style>
+<article>
 <section class="contacts-list">
     <div id='segmentedPanel' class='horizontal centered'></div>
     <div id="toggle-panels">
@@ -114,10 +141,4 @@
         </div>
     </div>
 </section>
-
-
-
-
-<section>
-         
-      </section>
+</article>

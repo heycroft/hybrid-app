@@ -14,7 +14,7 @@ var backButton = new steroids.buttons.NavigationBarButton();
 
 function onDeviceReady() {
   navigationBar();
-  disableScrolling();
+  // disableScrolling();
   uiSheetButtons();
   uiPopupButtons();
 } 
@@ -140,14 +140,14 @@ function backToPeople() {
   steroids.layers.pop();
 }
 
-function disableScrolling() {
+/*function disableScrolling() {
     
   // http://www.sitepoint.com/forums/showthread.php?673175-iphone-gt-safari-gt-Lock-viewport-scrolling
   $('body').bind("touchmove", {}, function(event){
       event.preventDefault();
   });
 }
-
+*/
 backButton.onTap = function() {
   steroids.layers.pop(); 
 };

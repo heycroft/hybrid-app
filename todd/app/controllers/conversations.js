@@ -14,8 +14,8 @@ function onDeviceReady() {
   // initSheetButtons();
   navigationBar();
   // buttonClasses();
-  disableScrolling();
-  enableScrolling();
+  // disableScrolling();
+  // enableScrolling();
   // initChuiSheet();
   // initGesture();
 } 
@@ -47,21 +47,21 @@ function closeLogoutControls() {
     $('.action-sheet').removeClass('in');
 }*/
 
-function disableScrolling() {
+/*function disableScrolling() {
     
   // http://www.sitepoint.com/forums/showthread.php?673175-iphone-gt-safari-gt-Lock-viewport-scrolling
   $('body').bind("touchmove", {}, function(event){
       event.preventDefault();
   });
-}
-
+}*/
+/*
 function enableScrolling() {
   // http://www.sitepoint.com/forums/showthread.php?673175-iphone-gt-safari-gt-Lock-viewport-scrolling
   $('.messages').bind("touchstart", {}, function(event){
       // event.preventDefault();
   });
 }
-
+*/
 function executeAnimation() {
   
   var animation = new steroids.Animation({
@@ -71,24 +71,21 @@ function executeAnimation() {
   
   steroids.layers.push({
     view: friendView,
-    animation: animation/*,
-    tabBar: false */
+    animation: animation
   });
 }
 
 friendButton.onTap = function() {
   steroids.layers.push( {
     view: friendView,
-    navigationBar: false/*,
-    tabBar: false*/
+    navigationBar: false
   });
 }
 
 function showFriend() {
   steroids.layers.push( {
     view: friendView,
-    navigationBar: true/*,
-    tabBar: false*/
+    navigationBar: true
   });
 }
 // logOutButton.onTap = function() {
