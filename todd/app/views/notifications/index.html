@@ -1,0 +1,112 @@
+ <script src="/vendor/chui/chocolatechip-3.0.6.js"></script>
+ <script src="/vendor/chui/chui-3.0.6.js"></script>
+ <script>
+    // chui switches
+    $(function() {
+         // Set response to last checked switch:
+         $('.switch').each(function(ctx, idx) {
+            if (window && window.jQuery) ctx = idx;
+            if (ctx.classList.contains('on')) {
+               $('#response').html($(ctx).find('input').val());
+            }
+         });
+
+         $('.switch').on('singletap swipeleft swiperight', function() {
+            if (this.classList.contains('on')) {
+               $('#response').html($(this).find('input').val());
+            } else {
+               $('#response').empty();
+            }
+         });
+      });
+ </script>
+ <script>
+ // chui selectable list
+   $(function() {
+      $('.tick').UISelectList({
+         selected: 2,
+         callback: function() {
+            $("#response").html($(this).text());
+         }
+      });
+      if (window.jQuery) {
+        $('.select').each(function(idx, ctx) {
+           if ($(ctx).hasClass('selected')) {
+              $("#response").html($(ctx).text());
+           }
+        });
+      } else {
+        $("#response").html($('li').hasClass('selected').text());
+      }
+  });
+ </script>
+
+ <section>
+    <ul class='list'>
+        <li class='comp'>
+           <div>
+              <h3>Feedback</h3>
+           </div>
+           <aside>
+              <span class="switch on" id="beepSwitch">
+                  <input type="checkbox" value="" name="switchSetting">
+              </span>
+           </aside>
+        </li>
+    </u>
+ </section>
+ <section>
+     <ul class='list tick select'>
+        <li>
+           <h3>Yes</h3>
+        </li>
+        <li>
+           <h3>No</h3>
+        </li>
+     </ul>
+ </section>
+ <section>
+    <ul class='list'>
+        <li class='comp'>
+           <div>
+              <h3>Test</h3>
+           </div>
+           <aside>
+              <span class="switch">
+                  <input type="checkbox" value="Beep" name="switchSetting">
+              </span>
+           </aside>
+        </li>
+        <li class='comp'>
+           <div>
+              <h3>Test</h3>
+           </div>
+           <aside>
+              <span class="switch">
+                  <input type="checkbox" value="" name="switchSetting">
+              </span>
+           </aside>
+        </li>
+        <li class='comp'>
+           <div>
+              <h3>Test</h3>
+           </div>
+           <aside>
+              <span class="switch">
+                  <input type="checkbox" value="" name="switchSetting">
+              </span>
+           </aside>
+        </li>
+        <li class='comp'>
+           <div>
+              <h3>Test</h3>
+           </div>
+           <aside>
+              <span class="switch">
+                 <input type="checkbox" value="" name="switchSetting">
+              </span>
+           </aside>
+        </li>
+     </ul>
+ <!--<p><span><strong>Interval feedback is set to: </strong></span><span id="response"></span></p>-->
+ </section>

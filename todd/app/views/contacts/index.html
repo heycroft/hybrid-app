@@ -1,0 +1,255 @@
+<script src="/vendor/chui/chocolatechip-3.0.6.js"></script>
+<script src="/vendor/chui/chui-3.0.6.js"></script>
+<!-- <script src="/controllers/contacts.js"></script>
+ -->
+
+<script>
+  $(function() {
+    $.UIDeletable({
+      list: '.list', 
+      callback: function(item) {
+        var text = $(item).siblings('h3').text();
+        $('#response').html('You deleted: <strong>' + text + '</strong>');
+      }
+    });
+  });
+</script>
+
+<style>
+  #response {
+     color: #007aff !important;
+  }
+</style>
+
+<section class="contacts">
+  <div class="apple-search">
+    <input type='text' id='contactSearch' placeholder='Search'>
+  </div>
+
+  <section>
+     <ul class='list'>
+        <li class='nav conversation-button'>
+          <h3>People</h3>
+        </li>
+        <li class='nav'>
+          <h3>People</h3>
+        </li>
+        <li class='nav'>
+          <h3>People</h3>
+        </li>
+        <li class='nav'>
+          <h3>People</h3>
+        </li>
+        <li class='nav'>
+          <h3>People</h3>
+        </li>
+      </ul>
+      <p id='response'></p>
+    </section>
+</section>
+<!-- <section>
+   <ul class='list' role='list'>
+      <li class='comp' ontouchend="openProfile()">
+         <div>
+            <h3>Billy Edwards</h3>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+      <li class='comp' data-goto="places">
+         <div>
+            <h3>Billy Edwards</h3>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+      <li class='comp' data-goto="places">
+         <div>
+            <h3>Billy Edwards</h3>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+   </ul>
+</section> -->
+<!-- 
+
+<section class="contacts-list">
+   <ul class='list'>
+      <li class='comp' ontouchend="openProfile()">
+         <aside>
+            <span class="default-icon"></span>
+         </aside>
+         <div>
+            <h3>Billy Edwards</h3>
+            <h4>March 16</h4>
+            <p>Oh nice!</p>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+      <li class='comp' ontouchend="openProfile()">
+         <aside>
+            <span class="default-icon"></span>
+         </aside>
+         <div>
+            <h3>Joel Owen</h3>
+         </div>
+         <aside>
+            <span class='show-detail'></span>
+         </aside>
+      </li>
+      <li class='comp' ontouchend="openProfile()">
+         <aside>
+            <span class="default-icon"></span>
+         </aside>
+         <div>
+            <h3>Jonathan Harry</h3>
+            <h4>March 10</h4>
+            <p>How are you?</p>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+      <li class='comp' ontouchend="openProfile()">
+         <aside>
+            <span class="default-icon"></span>
+         </aside>
+         <div>
+            <h3>Max Andrews</h3>
+            <h4>March 8</h4>
+            <p>Going to Shoreditch</p>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+      <li class='comp'>
+         <aside>
+            <span class="default-icon"></span>
+         </aside>
+         <div>
+            <h3>David Cook</h3>
+            <h4>February 28</h4>
+            <p>Will ring you in 5</p>
+         </div>
+         <aside>
+            <span class='nav'></span>
+         </aside>
+      </li>
+      <li class='comp'>
+         <aside>
+            <span class="default-icon"></span>
+         </aside>
+         <div>
+            <h3>Katie Gregory</h3>
+            <h4>February 20</h4>
+            <p>Great!</p>
+         </div>
+         <aside>
+            <span class='show-detail'></span>
+         </aside>
+      </li>
+   </ul>            
+</section>
+
+
+<section class="profile-list">
+  <ul class='list'>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="profile-john-img"></span>
+      </aside>
+      <div>
+        <h3>John Smith</h3>
+      </div>
+      <aside>
+        <span class='nav'></span>
+      </aside>
+    </li>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+      <div>
+        <h3>Jonathan Harry</h3>
+      </div>
+      <aside>
+        <span class='nav'></span>
+      </aside>
+    </li>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+       <div>
+          <h3>Max Andrews</h3>
+       </div>
+       <aside>
+          <span class='nav'></span>
+       </aside>
+    </li>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+       <div>
+          <h3>Katie Gregory</h3>
+       </div>
+       <aside>
+          <span class='nav'></span>
+       </aside>
+    </li>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+       <div>
+          <h3>Becky James</h3>
+       </div>
+       <aside>
+          <span class='nav'></span>
+       </aside>
+    </li>
+    
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+       <div>
+          <h3>Becky James</h3>
+       </div>
+       <aside>
+          <span class='nav'></span>
+       </aside>
+    </li>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+       <div>
+          <h3>Becky James</h3>
+       </div>
+       <aside>
+          <span class='nav'></span>
+       </aside>
+    </li>
+    <li class='comp' ontouchend="openProfile()">
+       <aside>
+          <span class="default-icon"></span>
+       </aside>
+       <div>
+          <h3>Becky James</h3>
+       </div>
+       <aside>
+          <span class='nav'></span>
+       </aside>
+    </li>
+  </ul>         
+</section>
+

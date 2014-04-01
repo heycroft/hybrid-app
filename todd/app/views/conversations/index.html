@@ -1,0 +1,41 @@
+<script src="/vendor/chui/chocolatechip-3.0.6.js"></script>
+<script src="/vendor/chui/chui-3.0.6.js"></script>
+
+<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+<section class="chat-firebase">
+  <div class="touch">
+    <div class="messages"></div>
+    <input type='text' class="chat-input user-name" id='nameInput' placeholder='Name'>
+    <input type='text' class="chat-input user-message" id='messageInput' placeholder='Message'>
+    <script>
+      var myDataRef = new Firebase('https://final-year.firebaseio.com/');
+      
+      $('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          myDataRef.push({name: name, text: text});
+          $('#messageInput').val('');
+        }
+      });
+      myDataRef.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
+      });
+      function displayChatMessage(name, text) {
+        $('<div class="chat-text"/>').text(text).prepend($('<p class="chat-name"/>').text(name+': ')).appendTo($('.messages'));
+        $('.messages')[0].scrollTop = $('.messages')[0].scrollHeight;
+      };
+    </script>
+  </div>
+</section>
+
+<div class="friend sheet">
+  <div class="sheet opened">
+    <a class="sheet-button mute_btn">Mute</a>
+    <a class="sheet-button block_btn">Block</a>
+    <a class="sheet-button cancel_btn">Cancel</a>
+  </div>
+</div>
+</div>

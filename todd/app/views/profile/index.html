@@ -1,0 +1,143 @@
+<script src="/vendor/chui/chocolatechip-3.0.6.js"></script>
+<script src="/vendor/chui/chui-3.0.6.js"></script>
+<script>
+// http://stackoverflow.com/questions/19250043/how-to-add-input-value-to-a-content-wrapped-between-div-tags-jquery
+/*function appendInput() {
+    $('.feed-update').append('<div> <ul class="list"> <li class="comp"> <aside> <span class="profile-john-img"></span> </aside> <div> <h3>John Smith</h3> <h4>February 10th</h4> <p>' + $('.input-value').val() + '</div> </p> </li> </ul> </div>');
+}
+*/
+
+$(function() {
+var segmentedOptions = {
+  id: 'mySegmented',
+  labels : ['Feed','About','Groups'],
+  selected: 0
+};
+
+var segmentedResponse = function(e) {
+  e.stopPropagation();
+  $('#output').find('h3 > span').html(($(this).index() + 1));
+};
+
+var newSegmented = $.UICreateSegmented(segmentedOptions);
+  $('#segmentedPanel').append(newSegmented);
+  $('.segmented').UISegmented({callback:segmentedResponse});
+  $('.segmented').UIPanelToggle('#toggle-panels',function(){$.noop;});
+
+var selectedPanel = $('.segmented').find('.selected').index();
+  $('#output').find('span').html(selectedPanel + 1);
+});
+
+</script>
+
+<article>
+  <div class="profile-container">
+
+    <div class="profile-top">
+      <img style="vertical-align: middle;line-height: 200px;" id="smallImage" src="/images/profile-todd2.jpeg" />
+      <!-- <img style="display:none;width:200px;height:200px;" id="largeImage" src="" /> -->
+      <!-- <button class="add-photo" onclick="capturePhotoEdit();">+</button> -->
+    </div>
+
+    <h2>John Smith</h2>
+   
+    <div class="">
+
+      <section>
+        <div id='segmentedPanel' class='horizontal centered'></div>
+        <div id="toggle-panels">
+          <div>
+          <!-- <input type="text" value="" class="input-value status-update" placeholder='Share your thoughts...'/>
+          <button type="button" id="push" onclick="appendInput()";>Share</button><br> -->
+          <br><div class="feed-update"></div><br>
+            <ul class='list'>
+              <li class='comp'>
+                <aside>
+                  <span class="profile-john-img"></span>
+                </aside>
+                <div>
+                  <h3>John Smith</h3>
+                  <h4>February 10th</h4>
+                  <p>This app idea is pretty neat.</p>
+                </div>
+              </li>
+            </ul>
+            <ul class='list'>
+              <li class='comp'>
+                <aside>
+                  <span class="profile-john-img" id="smallImage"></span>
+                </aside>
+                <div>
+                  <h3>John Smith</h3>
+                  <h4>February 6th</h4>
+                  <p>The UI on this app is unbelievable, so simple and easy to use.</p>
+                </div>
+              </li>
+            </ul> 
+            <ul class='list'>
+              <li class='comp'>
+                <aside>
+                  <span class="profile-john-img"></span>
+                </aside>
+                <div>
+                  <h3>John Smith</h3>
+                  <h4>January 28th</h4>
+                  <p>Here is my first post!</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class='list'>
+              <li class='comp'>
+              <!-- <aside>
+                  <img title='Hurry and Harm' src="../images/music/Hurry and Harm.png" height="80px">
+              </aside> -->
+                <div>
+                  <h3>About me</h3>
+                  <!-- <h4>Hurt</h4> -->
+                  <p>My name is John Smith and I am a full-time freelance web designer who specializes in creating dynamic and beautiful web pages. 
+
+                    I have been in the field for nearly 7 years, and have been loving every minute of it. I am a blogger, entrepreneur, designer, developer, and overall thinker.
+                  </p>
+                </div>
+              </li>
+            </ul>   
+          </div>
+          <div>
+            <ul class='list'>
+              <li class='comp' ontouchend="openGroup()">
+                <aside>
+                  <span class="default-icon"></span>
+                </aside>
+                <div>
+                  <h3>Football Sundays</h3>
+                  <h4>February 10th</h4>
+                  <p>Oganising football kickabouts</p>
+                </div>
+                <span class="group-visibility"></span>
+              </li>
+            </ul>
+            <ul class='list'>
+              <li class='comp'>
+                <aside>
+                  <span class="default-icon"></span>
+                </aside>
+                <div>
+                  <h3>Maths module</h3>
+                  <h4>February 3rd</h4>
+                  <p>Maths class group chat</p>
+                </div>
+              </li>
+            </ul>   
+          </div>
+        </div>
+        <!-- <ul class='list' id='output'>
+          <li>
+            <h3>You selected panel: <span></span>.</h3>
+          </li>
+        </ul> -->
+      </section>
+  </div>
+  </div>
+</article>
