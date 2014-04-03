@@ -77,23 +77,23 @@ function onSegmentSelected(e) {
 addButton.onTap = function() {
   steroids.layers.push( {
     view: addView,
-    navigationBar: false,
-    tabBar: false
+    navigationBar: false/*,
+    tabBar: false*/
   });
 }
 
 function showChat() {
   steroids.layers.push( {
     view: chatView,
-    navigationBar: true,
-    tabBar: false
+    navigationBar: true/*,
+    tabBar: false*/
   });
 } 
 
 function showGroup() {
   steroids.layers.push( {
     view: GroupView,
-    navigationBar: true,
-    tabBar: false
+    navigationBar: true/*,
+    tabBar: false*/
   });
 } 
